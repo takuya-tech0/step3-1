@@ -39,16 +39,16 @@ def main():
     unique_layouts = pd.unique(df['間取り'])
     unique_age_categories = pd.unique(df['築年数カテゴリ'])
 
-    filter_type = st.sidebar.radio("フィルタタイプを選択", ["駅名", "区"])
+    filter_type = st.sidebar.radio("駅/エリアを選択", ["駅名", "エリア"])
 
     if filter_type == "駅名":
         selected_stations = st.sidebar.multiselect('駅名を選択', unique_stations)
     else:
-        selected_districts = st.sidebar.multiselect('区を選択', unique_districts)
+        selected_districts = st.sidebar.multiselect('エリアを選択', unique_districts)
 
     selected_layouts = st.sidebar.multiselect('間取りを選択', unique_layouts)
     selected_age_categories = st.sidebar.multiselect('築年数カテゴリを選択', unique_age_categories)
-    rent_range = st.sidebar.slider("合計家賃の範囲（円）", 0, 1000000, (0, 1000000))
+    rent_range = st.sidebar.slider("家賃(管理費込み)の範囲（円）", 0, 150000, (0, 500000))
 
     max_walk_time = st.sidebar.slider("最寄り駅までの徒歩時間（分）", 0, 30, 10)
 
